@@ -1,0 +1,32 @@
+div.jqueryOA {
+	position: fixed;
+	padding:5px;
+	border-radius:5px;
+	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7), -1px 2px 20px rgba(255, 255, 255, 0.6) inset; 
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(255,255,255,0.3)));
+}
+
+div.jqueryOAInterface {
+	position:fixed;
+	background-color:red;
+	vertical-align:bottom;
+	height:auto;
+	overflow:hidden;
+}
+
+hr.jQueryOA {
+	border: 0;
+}
+
+div.jqueryOAClose {
+	position:absolute;
+	top:0;
+	right:0;
+	width:20px;
+	height:20px;
+	border-top-right-radius:5px;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background:url('../img/jqueryOAClose.png');
+	cursor:pointer;
+}
