@@ -14,6 +14,7 @@ var timeDissapear = 0.75; // In seconds. Used for Jquery/fadeOut().
 var margin = 15; // In pixels. Applied to X & Y.
 var minWidth = 400; // In pixels. Set the css min width.
 var maxWidth = 400; // In pixels. Set the CSS max width.
+var delimiter = ";;"; // Used to receive more than 1 alert. It has to concord with php/getNewOA.php conf.
 
 // Don't changes that one :
 var JQueryOAx = 0;
@@ -133,6 +134,58 @@ function getOA(OAlert)
 	JQueryOAx += 1;
 }
 
+function AjaxCallOA()
+{
+	var dateTime = new Date();
+	var year = dateTime.getFullYear();
+	var month = dateTime.getMonth() + 1;
+	var day = dateTime.getDate()
+	var hour = dateTime.getHours();
+	var minutes = dateTime.getMinutes();
+	var seconds = dateTime.getSeconds();
+	
+	if(month < 10)
+	{
+		month = "0"+month;
+	}
+	if(day < 10)
+	{
+		day = "0"+day;
+	}
+	if(hour < 10)
+	{
+		hour = "0"+hour;
+	}
+	if(minutes < 10)
+	{
+		minutes = "0"+minutes;
+	}
+	if(seconds < 10)
+	{
+		seconds = "0"+seconds;
+	}
+	
+	var PHPFormat = year+"-"+month+"-"+day+" "+hour+":"+minutes+":"+seconds;
+	
+	$.ajax({
+		url: "php/getNewOA.php",
+		method: "GET",
+		data:'datetime='+PHPFormat,
+		dataType: "html",
+		success:function(html, status)
+		{
+			if(html != "undefined" && html != "" && html != null)
+			{
+				var arrayAlert = html.split(delimiter);
+				
+				for (i = 0; i < arrayAlert.length; i++) { 
+					getOA(arrayAlert[i]);
+				}
+			}
+		}
+	});
+}
+
 /***
  * Used to create initial interface for alerts.
  * This function is automatically launched when document is ready.
@@ -143,4 +196,4 @@ function createOAInterface()
 }
 
 // Used for JOA to work.
-$(document).ready(createOAInterface);
+$(document).ready(function() { createOAInterface(); setInterval(AjaxCallOA, 3500); });
