@@ -9,7 +9,7 @@
 // Configure the values below :
 var positionX = "left"; // right || left
 var positionY = "bottom"; // bottom || top
-var timeAppear = 2; // In seconds. 0 mean that the alert have to be closed manually.
+var timeAppear = 0; // In seconds. 0 mean that the alert have to be closed manually.
 var timeDissapear = 0.75; // In seconds. Used for Jquery/fadeOut().
 var margin = 15; // In pixels. Applied to X & Y.
 var minWidth = 400; // In pixels. Set the css min width.
