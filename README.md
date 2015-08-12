@@ -10,4 +10,8 @@ JQuery Online Alert is a project based on Javascript/JQuery/Ajax to allow admini
 - PHP : 70%
 - Javascript : 90%
 
+# Example of Online Alerts.
+
+![alt tag](http://jerome.pros.free.fr/github/joa1.png)
+
 A "how to install" will be created soon.
